@@ -1,0 +1,25 @@
+name: Build and Execute Python Script
+
+on: [push]
+
+jobs:
+  build-and-run:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout du code
+      uses: actions/checkout@v4
+
+    - name: installation de Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
+
+    - name: Exécution de l'installation des dépendances
+      run: |
+        python -m pip install --upgrade pip
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+    - name: Run Python script
+      run: |
+        python your_script.py
