@@ -1,0 +1,19 @@
+name: Build and Execute Python Script
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: install Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.13'
+
+    - name: Execute Python script
+      run: python main.py
