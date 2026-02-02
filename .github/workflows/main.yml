@@ -1,4 +1,4 @@
-name: Build and Execute Python Script
+name: Build and Excecute Python Script
 
 on: [push]
 
@@ -15,5 +15,11 @@ jobs:
       with:
         python-version: '3.13'
 
-    - name: Execute Python script
+    - name: Excecute du script python
       run: python main.py
+
+    - name: Installation des dépendances
+      run: pip install fastapi locust pytest uvicorn coverage httpx pytest-mock pytest-profiling pylint sqlalchemy pydantic
+
+    - name: test with pytest
+      run: coverage run -m pytest --profile
